@@ -1,20 +1,21 @@
 #ifndef FICHIERS_H
 #define FICHIERS_H
 
-#define DEST "dest.crt"
 #include <stdio.h>
+
 #include "vue.h"
 
-char* fetchdata(){
-    char* data;
-    char* l = file_to_cipher();
-    FILE* f = fopen(l,"r");
-    FILE* d = fopen(DEST,"w");
-    while (!feof(f))
-    {
+#define SOURCE_PATH "source.txt"
+#define DEST "dest.crt"
+#define PARROT_FILE "peroq.def"
 
-    }
-    return data;
-}
+typedef struct charlist {
+    char c;
+    struct charlist* next;
+}s_charlist;
+
+s_charlist* fetchparrot();
+
+void discardparrot();
 
 #endif
