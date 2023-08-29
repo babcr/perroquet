@@ -1,7 +1,5 @@
 #include "chiffrage.h"
 
-#define SUCCESS  0
-
 char calc(char up, char down){
     return up - down;
 }
@@ -21,7 +19,7 @@ int cipher(FILE* file_to_cipher, FILE* destination, s_charlist* parrot){
         }
     }while (!feof(file_to_cipher));
     erasefile(SOURCE_PATH);
-    return SUCCESS;
+    return EXIT_SUCCESS;
 }
 
 int decipher(FILE* file_to_decipher, FILE* destination, s_charlist* parrot){
@@ -35,7 +33,7 @@ int decipher(FILE* file_to_decipher, FILE* destination, s_charlist* parrot){
         }
     }while (!feof(file_to_decipher));
     erasefile(DEST);
-    return SUCCESS;
+    return EXIT_SUCCESS;
 }
 
 int compare(char* word_to_compare,char* path){
