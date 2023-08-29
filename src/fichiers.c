@@ -15,7 +15,12 @@ s_charlist* fetchparrot(){
 
     return parrot;
 }
-
+void erasesource(){
+    FILE *fc;
+    fc=fopen(SOURCE_PATH,"w");;
+    if(fc!=0) printf("fichier effacer\n");
+    fclose(fc);
+}
 void discardparrot(s_charlist* parrot){
     s_charlist* first = parrot;
     s_charlist* cursor;

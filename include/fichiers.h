@@ -16,6 +16,6 @@ typedef struct charlist {
 }s_charlist;
 
 s_charlist* fetchparrot();
-
+void erasesource();
 void discardparrot(s_charlist*);
 #endif
