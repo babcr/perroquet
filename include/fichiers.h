@@ -13,8 +13,6 @@ typedef struct charlist {
     struct charlist* next;
 }s_charlist;
 
-//void writetofile(char*,char*);
-
 s_charlist* fetchparrot();
 
 void erasefile(char*);

@@ -17,11 +17,7 @@ s_charlist* fetchparrot(){
 
     return parrot;
 }
-/*
-void writetofile(char* str, char* filepath){
-    FILE* f = fopen(filepath, "w");
-    fwrite(str, sizeof(char), (int)(sizeof(str)/sizeof(char)),f);
-}*/
+
 void erasefile(char* path){
     FILE *fc;
     fc=fopen(path,"w");;

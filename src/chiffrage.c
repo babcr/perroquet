@@ -39,5 +39,19 @@ int decipher(FILE* file_to_decipher, FILE* destination, s_charlist* parrot){
 }
 
 int compare(char* word_to_compare,char* path){
-    return 0;
+    FILE* file = fopen(path, "r");
+    int n = 0;
+    char c = 0;
+    int diff = EXIT_SUCCESS;
+    do {
+        c = fgetc(file);
+        if (!feof(file)){
+            if (c != *(word_to_compare + n)){
+                diff = EXIT_FAILURE;
+            }
+        }
+        n++;
+    }while (!feof(file));
+    fclose(file);
+    return diff;
 }
