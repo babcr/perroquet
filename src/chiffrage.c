@@ -13,7 +13,7 @@ int cipher(FILE* file_to_cipher, FILE* destination, s_charlist* parrot){
     s_charlist* cursor = parrot;
     do {
         c = fgetc(file_to_cipher);
-        if (!feof(file_to_cipher)){ // important: second test de fin de ligne permettant d'éviter de prendre en compte le caractere de fin de ligne
+        if (!feof(file_to_cipher)){ // important: second test de fin de fichier permettant d'éviter de prendre en compte le caractere de fin de fichier
             fputc(calc(c,cursor->c) , destination);
             cursor = cursor->next;
         }
@@ -27,7 +27,7 @@ int decipher(FILE* file_to_decipher, FILE* destination, s_charlist* parrot){
     s_charlist* cursor = parrot;
     do {
         c = fgetc(file_to_decipher);
-        if (!feof(file_to_decipher)){   // important: second test de fin de ligne permettant d'éviter de prendre en compte le caractere de fin de fichier
+        if (!feof(file_to_decipher)){   // important: second test de fin de fichier permettant d'éviter de prendre en compte le caractere de fin de fichier
             fputc(uncalc(c,cursor->c) , destination);
             cursor = cursor->next;
         }
