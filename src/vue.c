@@ -30,7 +30,7 @@ void userparrot(){
 }
 char users_choice(){
     char choice;
-    printf("\nQuel action souhaitez-vous effectuer?(c -> chiffrer, d -> dechiffrer) ");
+    printf("\nQuel action souhaitez-vous effectuer? (c -> chiffrer, d -> dechiffrer)");
     scanf("%c",&choice);
     return choice;
 }

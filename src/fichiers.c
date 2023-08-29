@@ -21,7 +21,7 @@ s_charlist* fetchparrot(){
 void erasefile(char* path){
     FILE *fc;
     fc=fopen(path,"w");;
-    if(fc!=0) printf("fichier effacer\n");
+    if(fc!=0) printf("\nfichier %s effacé\n", path);
     fclose(fc);
 }
 void discardparrot(s_charlist* parrot){
