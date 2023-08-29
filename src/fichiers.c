@@ -15,9 +15,14 @@ s_charlist* fetchparrot(){
 
     return parrot;
 }
-void erasesource(){
+/*
+void writetofile(char* str, char* filepath){
+    FILE* f = fopen(filepath, "w");
+    fwrite(str, sizeof(char), (int)(sizeof(str)/sizeof(char)),f);
+}*/
+void erasefile(char* path){
     FILE *fc;
-    fc=fopen(SOURCE_PATH,"w");;
+    fc=fopen(path,"w");;
     if(fc!=0) printf("fichier effacer\n");
     fclose(fc);
 }

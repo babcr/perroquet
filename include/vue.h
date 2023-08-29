@@ -1,14 +1,14 @@
 #ifndef VUE_H
 #define VUE_H
 
-typedef enum choice{
-    c,
-    d
-} e_choice;
+#define PARROT_FILE "ressources/peroq.def"
+#define CHAR_MAX_PARROT 100
 
 void presentation();
-
-e_choice users_choice();
-
-char* file_to_cipher();
+void userparrot();
+char users_choice();
+void instructions(char choice);
+void conclusion(char choice);
+void intro(char* choice);
+void maintask();
 #endif
