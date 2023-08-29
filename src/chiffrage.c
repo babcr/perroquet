@@ -15,8 +15,10 @@ int cipher(FILE* file_to_cipher, FILE* destination, s_charlist* parrot){
     s_charlist* cursor = parrot;
     do {
         c = fgetc(file_to_cipher);
-        fputc(calc(c,cursor->c) , destination);
-        cursor = cursor->next;
+        if (!feof(file_to_cipher)){
+            fputc(calc(c,cursor->c) , destination);
+            cursor = cursor->next;
+        }
     }while (!feof(file_to_cipher));
     erasefile(SOURCE_PATH);
     return SUCCESS;
@@ -27,8 +29,10 @@ int decipher(FILE* file_to_decipher, FILE* destination, s_charlist* parrot){
     s_charlist* cursor = parrot;
     do {
         c = fgetc(file_to_decipher);
-        fputc(uncalc(c,cursor->c) , destination);
-        cursor = cursor->next;
+        if (!feof(file_to_decipher)){
+            fputc(uncalc(c,cursor->c) , destination);
+            cursor = cursor->next;
+        }
     }while (!feof(file_to_decipher));
     erasefile(DEST);
     return SUCCESS;

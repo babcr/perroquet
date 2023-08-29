@@ -5,11 +5,13 @@ s_charlist* fetchparrot(){
     
     parrot->c = fgetc(parrot_file);
     s_charlist* cursor = parrot;
-    
     while (!feof(parrot_file)){
-        cursor->next = (s_charlist*)malloc(sizeof(s_charlist));
-        cursor = cursor->next;
-        cursor->c = fgetc(parrot_file);
+        char c = fgetc(parrot_file);
+        if (!feof(parrot_file)){
+            cursor->next = (s_charlist*)malloc(sizeof(s_charlist));
+            cursor = cursor->next;
+            cursor->c = c;
+        }
     }
     cursor->next = parrot;
 

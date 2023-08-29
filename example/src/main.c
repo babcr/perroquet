@@ -5,7 +5,6 @@
 
 int main()
 {
-
     maintask();
     return EXIT_SUCCESS;
 }
