@@ -1,4 +1,5 @@
 #include "chiffrage.h"
+#include <string.h> // trouver la taille des chaines de characteres avec strlen
 
 char calc(char up, char down){
     return up - down;
@@ -41,15 +42,22 @@ int compare(char* word_to_compare,char* path){
     int n = 0;
     char c = 0;
     int diff = EXIT_SUCCESS;
+    const unsigned long word_size = strlen(word_to_compare);
     do {
         c = fgetc(file);
         if (!feof(file)){               // important: second test de fin de ligne permettant d'éviter de prendre en compte le caractere de fin de fichier
-            if (c != *(word_to_compare + n)){
+            if (n+1 > word_size){       // eviter d'accéder aux addresses au-dela de la chaine de caractere à comparer
                 diff = EXIT_FAILURE;
             }
+            else{
+                if (c != *(word_to_compare + n)){
+                    diff = EXIT_FAILURE;
+                }
+            }
+            n++;
         }
-        n++;
     }while (!feof(file));
+    if (word_size != n) diff = EXIT_FAILURE; // comparaison des tailles de chaine
     fclose(file);
     return diff;
 }

@@ -17,7 +17,11 @@ void presentation(){
 void userparrot(){
     char perroquet[CHAR_MAX_PARROT];
     printf("\nDonnez le perroquet puis taper sur ENTRER: ");
-    gets(perroquet);
+    fflush(stdout);
+    scanf( "%[^\n]", perroquet);
+    fgetc(stdin); // important: permet de retirer le retour à la ligne pour les prochaines lectures du buffer stdin
+    printf("Le perroquet donné par l'utilisateur est %s",perroquet);
+    //printf("\nTaille du perroquet = %lu",strlen(perroquet));
     int result = compare(perroquet, PARROT_FILE);
     switch (result){
         case EXIT_SUCCESS:
@@ -41,19 +45,19 @@ void instructions(char choice){
     while (ret==EXIT_FAILURE){
         switch (choice) {
             case 'c':
-                printf("\nNous allons chiffrer le contenu du fichier %s vers %s.", SOURCE_PATH , DEST);
+                printf("Nous allons chiffrer le contenu du fichier %s vers %s.", SOURCE_PATH , DEST);
                 printf("\nAssurez-vous que le contenu de %s soit bien celui que vous souhaitez chiffrer puis appuyez sur une touche.", SOURCE_PATH);
                 scanf("%s",&key);
                 ret = EXIT_SUCCESS;
                 break;
             case 'd':
-                printf("\nNous allons dechiffrer le contenu du fichier %s vers %s.", DEST,  SOURCE_PATH);
+                printf("Nous allons dechiffrer le contenu du fichier %s vers %s.", DEST,  SOURCE_PATH);
                 printf("\nAssurez-vous que le contenu de %s soit bien celui que vous souhaitez dechiffrer puis appuyez sur une touche.", DEST);
                 scanf("%s",&key);
                 ret = EXIT_SUCCESS;
                 break;
             default:
-                printf("\nChoix inconnu.");
+                printf("Choix inconnu.");
                 ret = EXIT_FAILURE;
         }
     }  
@@ -62,10 +66,10 @@ void instructions(char choice){
 void conclusion(char choice){
     switch (choice) {
         case 'c':
-            printf("\nLe contenu du fichier %s a bien été chiffré vers %s.", SOURCE_PATH , DEST);
+            printf("Le contenu du fichier %s a bien été chiffré vers %s.", SOURCE_PATH , DEST);
             break;
         case 'd':
-            printf("\nLe contenu du fichier %s a bien été dechiffré vers %s.", DEST, SOURCE_PATH);
+            printf("Le contenu du fichier %s a bien été dechiffré vers %s.", DEST, SOURCE_PATH);
             break;
         default:
             NULL;
